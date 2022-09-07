@@ -38,25 +38,6 @@ namespace Youtube_Locker
             File.WriteAllLines(filePath, linesList.ToArray());
             FlushDNS();
         }
-        public void FlushDNS1()
-        {
-            System.Diagnostics.Process process = new System.Diagnostics.Process();
-            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-
-            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-            startInfo.FileName = "cmd.exe";
-            startInfo.Arguments = "ipconfig /flushdns\nipconfig / release\nipconfig / renew";
-            process.StartInfo = startInfo;
-            process.Start();
-
-            //string strCmdText1 = "ipconfig /flushdns";
-            //string strCmdText2 = "ipconfig / release";
-            //string strCmdText3 = "ipconfig / renew";
-            ////strCmdText1 = "ipconfig /flushdns" + "ipconfig / release" + "ipconfig / renew";
-            //System.Diagnostics.Process.Start("CMD.exe", strCmdText1);
-            //System.Diagnostics.Process.Start("CMD.exe", strCmdText2);
-            //System.Diagnostics.Process.Start("CMD.exe", strCmdText3);
-        }
         public static void FlushDNS()
         {
             Process process = new Process();
@@ -69,7 +50,7 @@ namespace Youtube_Locker
             process.StandardInput.WriteLine("ipconfig /flushdns" + "ipconfig / release" + "ipconfig / renew");
             process.StandardInput.Flush();
             process.StandardInput.Close();
-            //process.WaitForExit();
+            process.WaitForExit();
         }
     }
 }
